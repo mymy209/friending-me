@@ -3,7 +3,7 @@ import React from 'react';
 function LogListPage(props) {
     return (
         <h1>
-            home
+            Log List
         </h1>
     );
 }

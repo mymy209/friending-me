@@ -2,11 +2,17 @@ import React from 'react';
 import {Route, NavLink} from 'react-router-dom';
 import './App.css';
 
+//services
+import * as goalsAPI from '../../services/goals-api';
+
 //components
-import LogListPage from '../../LogListPage/LogListPage';
+import AboutPage from '../AboutPage/AboutPage';
+import LandingPage from '../LandingPage/LandingPage';
+import LogListPage from '../LogListPage/LogListPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
+import GoalsListPage from '../GoalsListPage/GoalsListPage';
 
 import userService from '../../utils/userService';
 
@@ -14,10 +20,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      // ...this.getInitialState(),
+      ...this.getInitialState(),
       // Initialize user if there's a token, otherwise null
       user: userService.getUser()
     };
+  }
+
+  async componentDidMount() {
+    const goals = await goalsAPI.getAll();
+    this.setState({goals});
+  }
+
+  getInitialState() {
+    return {
+      goals: []
+    }
   }
 
   handleLogout = () => {
@@ -39,7 +56,7 @@ class App extends React.Component {
         />
         </header>
         <main>
-          <Route exact path='/' render={() =>
+          <Route exact path='/logs' render={() =>
             <LogListPage />
           } />
           <Route exact path='/signup' render={({ history }) => 
@@ -54,6 +71,15 @@ class App extends React.Component {
                 handleSignupOrLogin={this.handleSignupOrLogin}
               />
             }/>
+            <Route exact path='/' render={() => 
+              <LandingPage user={this.state.user}/>
+            } />
+            <Route exact path='/about' render={() => 
+              <AboutPage />
+            } />
+            <Route exact path='/goals' render={() =>
+              <GoalsListPage goals={this.state.goals}/>
+            } />
         </main>
       </div>
     );

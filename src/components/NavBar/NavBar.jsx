@@ -1,18 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
   let nav = props.user ?
-    <div>
-      <Link to='' className='NavBar-link' onClick={props.handleLogout}>LOG OUT</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
+    <div className={styles.navWrapper} >
+      <div>
+        <NavLink to='/' className={styles.nav}>Home</NavLink> 
+      </div>
+      <div>
+        <NavLink to='/goals' className={styles.nav}>My Goals</NavLink>
+        <NavLink to='' className={styles.nav} onClick={props.handleLogout}>Log Out</NavLink>
+      </div>
     </div>
     :
-    <div>
-      <Link to='/login' className='NavBar-link'>LOG IN</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='/signup' className='NavBar-link'>SIGN UP</Link>
+    <div className={styles.navWrapper}>
+      <div>
+        <NavLink to='/about' className={styles.nav}>About</NavLink>
+        <NavLink to='/' className={styles.nav}>Home</NavLink>
+      </div>
+      <div>
+        <NavLink to='/login' className={styles.nav} >Log In</NavLink>
+        <NavLink to='/signup' className={styles.nav}>Sign Up</NavLink>
+      </div>
     </div>;
 
   return (
@@ -21,5 +31,7 @@ const NavBar = (props) => {
     </div>
   );
 };
+
+
 
 export default NavBar;
