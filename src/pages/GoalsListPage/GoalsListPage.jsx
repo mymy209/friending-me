@@ -1,5 +1,7 @@
 import React from 'react';
 import GoalListItem from '../../components/GoalListItem/GoalListItem';
+import {Link} from 'react-router-dom';
+
 
 function GoalsListPage(props) {
     return (
@@ -8,8 +10,8 @@ function GoalsListPage(props) {
             {props.goals.map(goal =>(
                 <GoalListItem goal={goal} key={goal._id} handleDeleteGoal={props.handleDeleteGoal}/>
             ))}
+            <Link to='/goals/completed'>My Completed Goals</Link>
         </div>
-        
     );
 }
 

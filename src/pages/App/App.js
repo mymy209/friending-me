@@ -15,6 +15,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 //pages
+import CompletedGoalsListPage from '../CompletedGoalsListPage/CompletedGoalsListPage';
 import GoalsListPage from '../GoalsListPage/GoalsListPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
 import EditGoalPage from '../EditGoalPage/EditGoalPage';
@@ -49,6 +50,11 @@ class App extends React.Component {
     }
   }
 
+  getCompletedGoals = async () => {
+    const goals = await goalAPI.getCompleted();
+    this.setState({goals});
+  }
+
   handleAddGoal = async newGoalData => {
     const newGoal = await goalAPI.create(newGoalData);
     this.setState(state => ({
@@ -63,6 +69,7 @@ class App extends React.Component {
       goals: state.goals.filter(g => g._id !== id)
     }), () => this.props.history.push('/goals'));
   }
+
   handleUpdateGoal = async updatedGoalData => {
     const updatedGoal = await goalAPI.update(updatedGoalData);
     const newGoalsArray = this.state.goals.map(g => 
@@ -70,11 +77,10 @@ class App extends React.Component {
     );
     this.setState(
       {goals: newGoalsArray},
-      // This cb function runs after state is updated
       () => this.props.history.push('/goals')
     );
   }
-
+  
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null, goals: [] });
@@ -130,7 +136,13 @@ class App extends React.Component {
             } />
             <Route exact path='/goals/edit' render={({location}) =>
               userService.getUser() ? 
-              <EditGoalPage location={location} handleUpdateGoal={this.handleUpdateGoal}/>
+              <EditGoalPage location={location} handleUpdateGoal={this.handleUpdateGoal} handleGoalStatusChange={this.handleGoalStatusChange}/>
+              :
+              <Redirect to='/login' />
+            } />
+            <Route exact path='/goals/completed' render={({location}) =>
+              userService.getUser() ? 
+              <CompletedGoalsListPage goals={this.state.goals} getCompletedGoals={this.getCompletedGoals}/>
               :
               <Redirect to='/login' />
             } />

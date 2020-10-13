@@ -4,11 +4,12 @@ module.exports = {
     index, 
     create, 
     delete: deleteOne,
-    update
+    update,
+    past
 }
 
 async function index(req, res) {
-    const goals = await Goal.find({user: req.user._id});
+    const goals = await Goal.find({user: req.user._id, completed: false});
     res.status(200).json(goals);
 }
 
@@ -25,4 +26,9 @@ async function deleteOne(req, res) {
 async function update(req, res) {
     const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {new: true});
     res.status(200).json(updatedGoal);
-  }
+}
+
+async function past(req, res) {
+    const goals = await Goal.find({user: req.user._id, completed: true});
+    res.status(200).json(goals);
+}

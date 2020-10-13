@@ -7,9 +7,9 @@ const goalsCtrl = require('../../controllers/api/goals');
 router.use(require('../../config/auth'));
 router.get('/', checkAuth, goalsCtrl.index);
 router.post('/', checkAuth, goalsCtrl.create);
-router.use(require('../../config/auth'));
 router.delete('/:id', goalsCtrl.delete);
 router.put('/:id', goalsCtrl.update);
+router.get('/completed', goalsCtrl.past);
 
 //helper functions
 function checkAuth(req, res, next) {

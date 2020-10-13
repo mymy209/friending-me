@@ -12,6 +12,16 @@ export function getAll() {
   return fetch(BASE_URL, options).then(res => res.json());
 }
 
+export function getCompleted() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(`${BASE_URL}/completed/`, options).then(res => res.json());
+}
+
 export function create(goal) {
   const options = {
     method: 'POST',

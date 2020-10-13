@@ -11,7 +11,7 @@ function GoalListItem(props) {
           state: {goal: props.goal}
         }}
       >
-        EDIT
+        Edit
       </Link>
       <button
         onClick={() => props.handleDeleteGoal(props.goal._id)}

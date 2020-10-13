@@ -22,18 +22,35 @@ class EditGoalPage extends React.Component {
    });
  };
 
+ handleCheck = e => {
+   const formData = {
+     ...this.state.formData, completed: !this.state.formData.completed
+   }
+   this.setState({
+     formData, 
+     invalidForm: !this.formRef.current.checkValidity()
+   });
+ }
+
  render() {
    return (
      <>
        <h1>Edit Goal</h1>
        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-         <div className="form-group">
+         <div>
            <label>Goal's Title (required)</label>
            <input
              name="title"
              value={this.state.formData.title}
              onChange={this.handleChange}
              required
+           />
+           <label>Accomplished </label>
+           <input
+            type="checkbox"
+            name="completed"
+            value={this.state.formData.completed}
+            onChange={this.handleCheck}
            />
          </div>
          <button
