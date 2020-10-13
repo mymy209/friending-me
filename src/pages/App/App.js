@@ -4,6 +4,7 @@ import './App.css';
 
 //services
 import * as goalAPI from '../../utils/goals-api';
+import userService from '../../utils/userService';
 
 //components
 import AboutPage from '../AboutPage/AboutPage';
@@ -16,8 +17,7 @@ import NavBar from '../../components/NavBar/NavBar';
 //pages
 import GoalsListPage from '../GoalsListPage/GoalsListPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
-
-import userService from '../../utils/userService';
+import EditGoalPage from '../EditGoalPage/EditGoalPage';
 
 class App extends React.Component {
   constructor() {
@@ -29,9 +29,24 @@ class App extends React.Component {
     };
   }
 
+  /*--- Lifecycle Methods ---*/
   async componentDidMount() {
     const goals = await goalAPI.getAll();
     this.setState({goals});
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    if (this.state.user !== prevState.user) {
+      const goals = await goalAPI.getAll();
+      this.setState({goals});
+    }
+  }
+
+  /*--- Custom Methods ---*/
+  getInitialState() {
+    return {
+      goals: []
+    }
   }
 
   handleAddGoal = async newGoalData => {
@@ -39,18 +54,30 @@ class App extends React.Component {
     this.setState(state => ({
       goals: [...state.goals, newGoal]
     }), 
-    () => this.props.history.push('/'));
+    () => this.props.history.push('/goals'));
   }
 
-  getInitialState() {
-    return {
-      goals: []
-    }
+  handleDeleteGoal= async id => {
+    await goalAPI.deleteOne(id);
+    this.setState(state => ({
+      goals: state.goals.filter(g => g._id !== id)
+    }), () => this.props.history.push('/goals'));
+  }
+  handleUpdateGoal = async updatedGoalData => {
+    const updatedGoal = await goalAPI.update(updatedGoalData);
+    const newGoalsArray = this.state.goals.map(g => 
+      g._id === updatedGoal._id ? updatedGoal : g
+    );
+    this.setState(
+      {goals: newGoalsArray},
+      // This cb function runs after state is updated
+      () => this.props.history.push('/goals')
+    );
   }
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({ user: null, goals: [] });
   }
 
   handleSignupOrLogin = () => {
@@ -97,7 +124,13 @@ class App extends React.Component {
               } />
             <Route exact path='/goals' render={() =>
               userService.getUser() ? 
-              <GoalsListPage goals={this.state.goals}/>
+              <GoalsListPage goals={this.state.goals} handleDeleteGoal={this.handleDeleteGoal}/>
+              :
+              <Redirect to='/login' />
+            } />
+            <Route exact path='/goals/edit' render={({location}) =>
+              userService.getUser() ? 
+              <EditGoalPage location={location} handleUpdateGoal={this.handleUpdateGoal}/>
               :
               <Redirect to='/login' />
             } />

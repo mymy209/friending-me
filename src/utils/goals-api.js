@@ -2,10 +2,6 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/goals/';
 
-// export default {
-//   getAll
-// };
-
 export function getAll() {
   const options = {
     method: 'GET',
@@ -27,4 +23,25 @@ export function create(goal) {
     body: JSON.stringify(goal)
   };
   return fetch(BASE_URL, options).then(res => res.json());
+}
+
+export function update(goal) {
+  return fetch(`${BASE_URL}/${goal._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer' + tokenService.getToken()
+  },
+    body: JSON.stringify(goal)
+  }).then(res => res.json());
+}
+
+export function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer' + tokenService.getToken()
+    }
+  }).then(res => res.json());
 }
