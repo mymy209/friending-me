@@ -1,9 +1,9 @@
 import React from 'react';
-import {Route, NavLink} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import './App.css';
 
 //services
-import * as goalsAPI from '../../services/goals-api';
+import * as goalsAPI from '../../utils/goals-api';
 
 //components
 import AboutPage from '../AboutPage/AboutPage';
@@ -78,7 +78,10 @@ class App extends React.Component {
               <AboutPage />
             } />
             <Route exact path='/goals' render={() =>
+              userService.getUser() ? 
               <GoalsListPage goals={this.state.goals}/>
+              :
+              <Redirect to='/login' />
             } />
         </main>
       </div>

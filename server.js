@@ -10,7 +10,6 @@ require('./config/database');
 
 const app = express();
 
-const goalsRouter = require('./routes/api/goals');
 const logsRouter = require('./routes/api/logs');
 
 app.use(logger('dev'));
@@ -23,9 +22,10 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" route
 app.use('/api/logs', logsRouter);
-app.use('/api/goals', goalsRouter);
+
 app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
+app.use('/api/goals', require('./routes/api/goals'));
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

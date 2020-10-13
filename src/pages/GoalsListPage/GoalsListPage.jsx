@@ -5,7 +5,7 @@ function GoalsListPage(props) {
         <div>
             <h1>Goals List</h1>
             {props.goals.map(goal =>(
-                <p>{goal.title}</p>
+                <p key={goal}>{goal.title}</p>
             ))}
         </div>
         
