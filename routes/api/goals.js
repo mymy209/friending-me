@@ -6,6 +6,7 @@ const goalsCtrl = require('../../controllers/api/goals');
 /* GET /api/goals */
 router.use(require('../../config/auth'));
 router.get('/', checkAuth, goalsCtrl.index);
+router.post('/', goalsCtrl.create);
 
 //helper functions
 function checkAuth(req, res, next) {

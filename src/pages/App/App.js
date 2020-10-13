@@ -1,9 +1,9 @@
 import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Redirect, Switch} from 'react-router-dom';
 import './App.css';
 
 //services
-import * as goalsAPI from '../../utils/goals-api';
+import * as goalAPI from '../../utils/goals-api';
 
 //components
 import AboutPage from '../AboutPage/AboutPage';
@@ -12,7 +12,10 @@ import LogListPage from '../LogListPage/LogListPage';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
+
+//pages
 import GoalsListPage from '../GoalsListPage/GoalsListPage';
+import AddGoalPage from '../AddGoalPage/AddGoalPage';
 
 import userService from '../../utils/userService';
 
@@ -27,8 +30,16 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const goals = await goalsAPI.getAll();
+    const goals = await goalAPI.getAll();
     this.setState({goals});
+  }
+
+  handleAddGoal = async newGoalData => {
+    const newGoal = await goalAPI.create(newGoalData);
+    this.setState(state => ({
+      goals: [...state.goals, newGoal]
+    }), 
+    () => this.props.history.push('/'));
   }
 
   getInitialState() {
@@ -56,6 +67,7 @@ class App extends React.Component {
         />
         </header>
         <main>
+          <Switch>
           <Route exact path='/logs' render={() =>
             <LogListPage />
           } />
@@ -77,13 +89,20 @@ class App extends React.Component {
             <Route exact path='/about' render={() => 
               <AboutPage />
             } />
+              <Route exact path='/goals/create' render={() =>
+                userService.getUser() ? 
+                <AddGoalPage user={this.state.user} handleAddGoal={this.handleAddGoal} />
+                :
+                <Redirect to='/login' />
+              } />
             <Route exact path='/goals' render={() =>
               userService.getUser() ? 
               <GoalsListPage goals={this.state.goals}/>
               :
               <Redirect to='/login' />
             } />
-        </main>
+            </Switch>
+          </main>
       </div>
     );
   }

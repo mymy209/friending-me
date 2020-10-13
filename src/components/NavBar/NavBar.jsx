@@ -9,6 +9,7 @@ const NavBar = (props) => {
         <Link to='/' className={styles.nav}>Home</Link> 
       </div>
       <div>
+        <Link to='/goals/create' className={styles.nav}>Add Goal</Link>
         <Link to='/goals' className={styles.nav}>My Goals</Link>
         <Link to='' className={styles.nav} onClick={props.handleLogout}>Log Out</Link>
       </div>
