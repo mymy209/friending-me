@@ -1,27 +1,27 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
 const NavBar = (props) => {
   let nav = props.user ?
     <div className={styles.navWrapper} >
       <div>
-        <NavLink to='/' className={styles.nav}>Home</NavLink> 
+        <Link to='/' className={styles.nav}>Home</Link> 
       </div>
       <div>
-        <NavLink to='/goals' className={styles.nav}>My Goals</NavLink>
-        <NavLink to='' className={styles.nav} onClick={props.handleLogout}>Log Out</NavLink>
+        <Link to='/goals' className={styles.nav}>My Goals</Link>
+        <Link to='' className={styles.nav} onClick={props.handleLogout}>Log Out</Link>
       </div>
     </div>
     :
     <div className={styles.navWrapper}>
       <div>
-        <NavLink to='/about' className={styles.nav}>About</NavLink>
-        <NavLink to='/' className={styles.nav}>Home</NavLink>
+        <Link to='/about' className={styles.nav}>About</Link>
+        <Link to='/' className={styles.nav}>Home</Link>
       </div>
       <div>
-        <NavLink to='/login' className={styles.nav} >Log In</NavLink>
-        <NavLink to='/signup' className={styles.nav}>Sign Up</NavLink>
+        <Link to='/login' className={styles.nav} >Log In</Link>
+        <Link to='/signup' className={styles.nav}>Sign Up</Link>
       </div>
     </div>;
 
