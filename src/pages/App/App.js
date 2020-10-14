@@ -20,6 +20,65 @@ import GoalsListPage from '../GoalsListPage/GoalsListPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
 import EditGoalPage from '../EditGoalPage/EditGoalPage';
 
+// const EMOTIONS = {
+//   happy: {
+//     pic: "https://i.imgur.com/hjCAHpb.png", 
+//     points: 20
+//   },
+//   excited: {
+//     pic: "https://i.imgur.com/FIVzqiC.png", 
+//     points: 15
+//   },
+//   surprised: {
+//     pic: "https://i.imgur.com/wGIyVji.png", 
+//     points: 12
+//   },
+//   embarrassed: {
+//     pic: "https://i.imgur.com/QCefQe3.png", 
+//     points: 7
+//   },
+//   relaxed: {
+//     pic: "https://i.imgur.com/P7z2Wup.png", 
+//     points: 20
+//   },
+//   sad: {
+//     pic: "https://i.imgur.com/iYQvMAA.png", 
+//     points: 3
+//   },
+//   angry: {
+//     pic: "https://i.imgur.com/seEeTzq.png", 
+//     points: 8
+//   },
+//   numb: {
+//     pic: "https://i.imgur.com/UgdgHN8.png", 
+//     points: 0
+//   },
+//   irritated: {
+//     pic: "https://i.imgur.com/YtTr578.png", 
+//     points: 4
+//   },
+//   disgusted: {
+//     pic: "https://i.imgur.com/IIXG1EF.png", 
+//     points: 4
+//   },
+//   disappointed: {
+//     pic: "https://i.imgur.com/67nZtpu.png", 
+//     points: 5
+//   },
+//   tired: {
+//     pic: "https://i.imgur.com/jZgaH3g.png", 
+//     points: 7
+//   },
+//   scared: {
+//     pic: "https://i.imgur.com/14I012m.png", 
+//     points: 5
+//   },
+//   hopefule: {
+//     pic: "https://i.imgur.com/iph4ctn.png", 
+//     points: 20
+//   }
+// };
+
 class App extends React.Component {
   constructor() {
     super();

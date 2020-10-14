@@ -4,10 +4,11 @@ import {Link} from 'react-router-dom';
 
 
 function GoalsListPage(props) {
+    const goals = props.goals.filter(goal => !goal.completed );
     return (
         <div>
             <h1>Goals List</h1>
-            {props.goals.map(goal =>(
+            {goals.map(goal => (
                 <GoalListItem goal={goal} key={goal._id} handleDeleteGoal={props.handleDeleteGoal}/>
             ))}
             <Link to='/goals/completed'>My Completed Goals</Link>
