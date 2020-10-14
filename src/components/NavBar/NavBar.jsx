@@ -10,6 +10,7 @@ const NavBar = (props) => {
       </div>
       <div>
         <Link to='/profile' className={styles.nav}>Profile</Link>
+        <Link to='/logs/create' className={styles.nav}>Add Log</Link>
         <Link to='/logs' className={styles.nav}>My Logs</Link>
         <Link to='/goals/create' className={styles.nav}>Add Goal</Link>
         <Link to='/goals' className={styles.nav}>My Goals</Link>

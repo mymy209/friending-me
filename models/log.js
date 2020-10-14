@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const logSchema = new Schema({
     emotion: {
-        type: Number, 
+        type: String, 
         required: true
     },
     description: String,

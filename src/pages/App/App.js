@@ -4,6 +4,7 @@ import './App.css';
 
 //services
 import * as goalAPI from '../../utils/goals-api';
+import * as logAPI from '../../utils/logs-api';
 import userService from '../../utils/userService';
 
 //components
@@ -15,70 +16,71 @@ import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 //pages
+import AddLogPage from '../AddLogPage/AddLogPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import CompletedGoalsListPage from '../CompletedGoalsListPage/CompletedGoalsListPage';
 import GoalsListPage from '../GoalsListPage/GoalsListPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
 import EditGoalPage from '../EditGoalPage/EditGoalPage';
 
-// const EMOTIONS = {
-//   happy: {
-//     pic: "https://i.imgur.com/hjCAHpb.png", 
-//     points: 20
-//   },
-//   excited: {
-//     pic: "https://i.imgur.com/FIVzqiC.png", 
-//     points: 15
-//   },
-//   surprised: {
-//     pic: "https://i.imgur.com/wGIyVji.png", 
-//     points: 12
-//   },
-//   embarrassed: {
-//     pic: "https://i.imgur.com/QCefQe3.png", 
-//     points: 7
-//   },
-//   relaxed: {
-//     pic: "https://i.imgur.com/P7z2Wup.png", 
-//     points: 20
-//   },
-//   sad: {
-//     pic: "https://i.imgur.com/iYQvMAA.png", 
-//     points: 3
-//   },
-//   angry: {
-//     pic: "https://i.imgur.com/seEeTzq.png", 
-//     points: 8
-//   },
-//   numb: {
-//     pic: "https://i.imgur.com/UgdgHN8.png", 
-//     points: 0
-//   },
-//   irritated: {
-//     pic: "https://i.imgur.com/YtTr578.png", 
-//     points: 4
-//   },
-//   disgusted: {
-//     pic: "https://i.imgur.com/IIXG1EF.png", 
-//     points: 4
-//   },
-//   disappointed: {
-//     pic: "https://i.imgur.com/67nZtpu.png", 
-//     points: 5
-//   },
-//   tired: {
-//     pic: "https://i.imgur.com/jZgaH3g.png", 
-//     points: 7
-//   },
-//   scared: {
-//     pic: "https://i.imgur.com/14I012m.png", 
-//     points: 5
-//   },
-//   hopefule: {
-//     pic: "https://i.imgur.com/iph4ctn.png", 
-//     points: 20
-//   }
-// };
+const EMOTIONS = {
+  happy: {
+    pic: "https://i.imgur.com/hjCAHpb.png", 
+    points: 20
+  },
+  excited: {
+    pic: "https://i.imgur.com/FIVzqiC.png", 
+    points: 15
+  },
+  surprised: {
+    pic: "https://i.imgur.com/wGIyVji.png", 
+    points: 12
+  },
+  embarrassed: {
+    pic: "https://i.imgur.com/QCefQe3.png", 
+    points: 7
+  },
+  relaxed: {
+    pic: "https://i.imgur.com/P7z2Wup.png", 
+    points: 20
+  },
+  sad: {
+    pic: "https://i.imgur.com/iYQvMAA.png", 
+    points: 3
+  },
+  angry: {
+    pic: "https://i.imgur.com/seEeTzq.png", 
+    points: 8
+  },
+  numb: {
+    pic: "https://i.imgur.com/UgdgHN8.png", 
+    points: 0
+  },
+  irritated: {
+    pic: "https://i.imgur.com/YtTr578.png", 
+    points: 4
+  },
+  disgusted: {
+    pic: "https://i.imgur.com/IIXG1EF.png", 
+    points: 4
+  },
+  disappointed: {
+    pic: "https://i.imgur.com/67nZtpu.png", 
+    points: 5
+  },
+  tired: {
+    pic: "https://i.imgur.com/jZgaH3g.png", 
+    points: 7
+  },
+  scared: {
+    pic: "https://i.imgur.com/14I012m.png", 
+    points: 5
+  },
+  hopeful: {
+    pic: "https://i.imgur.com/iph4ctn.png", 
+    points: 20
+  }
+};
 
 const AVATAR = [
   "https://i.imgur.com/C3Jd8pO.png", 
@@ -106,13 +108,17 @@ class App extends React.Component {
   /*--- Lifecycle Methods ---*/
   async componentDidMount() {
     const goals = await goalAPI.getAll();
-    this.setState({goals});
+    const logs = await logAPI.getAll();
+    this.setState({goals, logs});
   }
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.state.user !== prevState.user) {
       const goals = await goalAPI.getAll();
-      this.setState({goals});
+      const logs = await logAPI.getAll();
+      this.setState({goals, logs});
+      console.log(this.state.logs);
+      console.log(this.state.goals);
     }
   }
 
@@ -120,7 +126,7 @@ class App extends React.Component {
   getInitialState() {
     return {
       goals: [],
-      exp: 0
+      logs: []
     }
   }
 
@@ -157,7 +163,7 @@ class App extends React.Component {
   
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null, goals: [] });
+    this.setState({ user: null, goals: [], logs: [] });
   }
 
   handleSignupOrLogin = () => {
@@ -177,7 +183,7 @@ class App extends React.Component {
         <main>
           <Switch>
           <Route exact path='/logs' render={() =>
-            <LogListPage />
+            <LogListPage logs={this.state.logs} user={this.state.user} EMOTIONS={EMOTIONS}/>
           } />
           <Route exact path='/signup' render={({ history }) => 
               <SignupPage
@@ -224,6 +230,12 @@ class App extends React.Component {
             <Route exact path='/profile' render={({location}) =>
               userService.getUser() ? 
               <ProfilePage AVATAR={AVATAR}/>
+              :
+              <Redirect to='/login' />
+            } />
+            <Route exact path='/logs/create' render={({location}) =>
+              userService.getUser() ? 
+              <AddLogPage EMOTIONS={EMOTIONS} user={this.state.user}/>
               :
               <Redirect to='/login' />
             } />

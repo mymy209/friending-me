@@ -1,10 +1,14 @@
 import React from 'react';
+import LogListItem from '../../components/LogListItem/LogListItem';
 
 function LogListPage(props) {
     return (
-        <h1>
-            Log List
-        </h1>
+        <div>
+            <h1>Log List</h1>
+            {props.logs.map(log => (
+                <LogListItem log={log} key={log._id} EMOTIONS={props.EMOTIONS}/>
+            ))}
+        </div>
     );
 }
 
