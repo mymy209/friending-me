@@ -11,15 +11,15 @@ class AddLogPage extends Component {
     }
  };
 
- formRef = React.createRef();
+ checkIfValid() {
+   if (this.state.formData.emotion) return false;
+ }
 
-async componentDidMount() {
-  console.log(this.props.EMOTIONS);
-}
+ formRef = React.createRef();
 
  handleSubmit = e => {
    e.preventDefault();
-   this.props.handleAddGoal(this.state.formData);
+   this.props.handleAddLog(this.state.formData);
  };
 
  handleChange = e => {
@@ -31,7 +31,12 @@ async componentDidMount() {
  };
 
  handleClick = e => {
-
+   const formData = {...this.state.formData, emotion: e.target.alt};
+   this.setState({
+     formData,
+     invalidForm: !this.formRef.current.checkValidity()
+   });
+   console.log(this.state);
  }
 
  render() {
@@ -39,13 +44,15 @@ async componentDidMount() {
      <>
        <h1>Add Log</h1>
        {Object.keys(this.props.EMOTIONS).map(emotion => (
-         <div>
+         <div key={emotion}>
            <p>{emotion}</p>
-           <EmotionItem EMOTIONS={this.props.EMOTIONS} key={emotion} emotion={emotion}/>
-           </div>
+           <button>
+            <img src={this.props.EMOTIONS[emotion].pic} alt={emotion} onClick={this.handleClick}/>
+           </button>
+          </div>
        ))}
        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-         <div className="form-group">
+         <div>
            <label>Note</label>
            <input
              name="description"
@@ -56,7 +63,6 @@ async componentDidMount() {
          </div>
          <button
            type="submit"
-           className="btn"
            disabled={this.state.invalidForm}
          >
            Add Log

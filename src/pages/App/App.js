@@ -138,7 +138,7 @@ class App extends React.Component {
   handleAddGoal = async newGoalData => {
     const newGoal = await goalAPI.create(newGoalData);
     this.setState(state => ({
-      goals: [...state.goals, newGoal]
+      logs: [...state.logs, newGoal]
     }), 
     () => this.props.history.push('/goals'));
   }
@@ -159,6 +159,14 @@ class App extends React.Component {
       {goals: newGoalsArray},
       () => this.props.history.push('/goals')
     );
+  }
+
+  handleAddLog = async newLogData => {
+    const newLog = await logAPI.create(newLogData);
+    this.setState(state => ({
+      logs: [...state.logs, newLog]
+    }), 
+    () => this.props.history.push('/logs'));
   }
   
   handleLogout = () => {
@@ -235,7 +243,7 @@ class App extends React.Component {
             } />
             <Route exact path='/logs/create' render={({location}) =>
               userService.getUser() ? 
-              <AddLogPage EMOTIONS={EMOTIONS} user={this.state.user}/>
+              <AddLogPage EMOTIONS={EMOTIONS} user={this.state.user} handleAddLog={this.handleAddLog}/>
               :
               <Redirect to='/login' />
             } />
