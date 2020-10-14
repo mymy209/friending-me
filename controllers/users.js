@@ -1,11 +1,13 @@
 //ALL COMPLETED
 const User = require('../models/user');
+const Goal = require('../models/goal');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login, 
+  profile
 };
 
 async function signup(req, res) {
@@ -35,6 +37,14 @@ async function login(req, res) {
   } catch (err) {
     return res.status(401).json(err);
   }
+}
+
+async function profile(req, res) {
+  const goals = await Goal.find({user: req.user._id, completed: true});
+  goals.forEach(function(goal) {
+
+  });
+  res.status(200).json(goals);
 }
 
 /*----- Helper Functions -----*/

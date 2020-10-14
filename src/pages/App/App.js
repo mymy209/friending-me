@@ -15,6 +15,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 //pages
+import ProfilePage from '../ProfilePage/ProfilePage';
 import CompletedGoalsListPage from '../CompletedGoalsListPage/CompletedGoalsListPage';
 import GoalsListPage from '../GoalsListPage/GoalsListPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
@@ -79,6 +80,19 @@ import EditGoalPage from '../EditGoalPage/EditGoalPage';
 //   }
 // };
 
+const AVATAR = [
+  "https://i.imgur.com/C3Jd8pO.png", 
+  "https://i.imgur.com/6w1NLhq.png",
+  "https://i.imgur.com/LA3d4ko.png",
+  "https://i.imgur.com/P5ZLfEW.png",
+  "https://i.imgur.com/nnPZp4j.png",
+  "https://i.imgur.com/lejs1lx.png",
+  "https://i.imgur.com/g6IXvP1.png",
+  "https://i.imgur.com/3DayTEq.png",
+  "https://i.imgur.com/XYfAjp9.png",
+  "https://i.imgur.com/7H8fv3j.png"
+]
+
 class App extends React.Component {
   constructor() {
     super();
@@ -105,7 +119,8 @@ class App extends React.Component {
   /*--- Custom Methods ---*/
   getInitialState() {
     return {
-      goals: []
+      goals: [],
+      exp: 0
     }
   }
 
@@ -156,6 +171,7 @@ class App extends React.Component {
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
+          AVATAR={AVATAR}
         />
         </header>
         <main>
@@ -202,6 +218,12 @@ class App extends React.Component {
             <Route exact path='/goals/completed' render={({location}) =>
               userService.getUser() ? 
               <CompletedGoalsListPage goals={this.state.goals} getCompletedGoals={this.getCompletedGoals}/>
+              :
+              <Redirect to='/login' />
+            } />
+            <Route exact path='/profile' render={({location}) =>
+              userService.getUser() ? 
+              <ProfilePage AVATAR={AVATAR}/>
               :
               <Redirect to='/login' />
             } />
