@@ -14,6 +14,7 @@ const NavBar = (props) => {
         <Link to='/logs' className={styles.nav}>My Logs</Link>
         <Link to='/goals/create' className={styles.nav}>Add Goal</Link>
         <Link to='/goals' className={styles.nav}>My Goals</Link>
+        <Link to='/chill' className={styles.nav}>Chill</Link>
         <Link to='' className={styles.nav} onClick={props.handleLogout}>Log Out</Link>
       </div>
     </div>

@@ -22,6 +22,7 @@ import CompletedGoalsListPage from '../CompletedGoalsListPage/CompletedGoalsList
 import GoalsListPage from '../GoalsListPage/GoalsListPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
 import EditGoalPage from '../EditGoalPage/EditGoalPage';
+import ChillPage from '../ChillPage/ChillPage';
 
 const EMOTIONS = {
   happy: {
@@ -88,11 +89,35 @@ const AVATAR = [
   "https://i.imgur.com/LA3d4ko.png",
   "https://i.imgur.com/P5ZLfEW.png",
   "https://i.imgur.com/nnPZp4j.png",
+  "https://i.imgur.com/vBysQ4D.png",
+  "https://i.imgur.com/yW6X3gY.png",
   "https://i.imgur.com/lejs1lx.png",
   "https://i.imgur.com/g6IXvP1.png",
   "https://i.imgur.com/3DayTEq.png",
   "https://i.imgur.com/XYfAjp9.png",
-  "https://i.imgur.com/7H8fv3j.png"
+  "https://i.imgur.com/7H8fv3j.png",
+  "https://i.imgur.com/9UFb64j.png",
+  "https://i.imgur.com/qtS1OGC.png",
+  "https://i.imgur.com/6BDfsXs.png",
+  "https://i.imgur.com/Z6N6i1G.png",
+  "https://i.imgur.com/tLMLYmc.png",
+  "https://i.imgur.com/p6lsJOB.png",
+  "https://i.imgur.com/tjGKlQA.png",
+  "https://i.imgur.com/ogyM8sp.png",
+  "https://i.imgur.com/7gvxSIG.png",
+  "https://i.imgur.com/cQT9u00.png",
+  "https://i.imgur.com/R44xHp6.png",
+  "https://i.imgur.com/ioMxJzw.png",
+  "https://i.imgur.com/SzsiHpZ.png",
+  "https://i.imgur.com/JoXlLL8.png",
+  "https://i.imgur.com/a92KMsD.png",
+  "https://i.imgur.com/OvVshne.png",
+  "https://i.imgur.com/Faca0pV.png",
+  "https://i.imgur.com/f1M2z2z.png",
+  "https://i.imgur.com/482NWmE.png",
+  "https://i.imgur.com/0oyfoJG.png",
+  "https://i.imgur.com/dEDHjqy.png",
+  "https://i.imgur.com/laMZT9u.png"
 ]
 
 class App extends React.Component {
@@ -247,6 +272,9 @@ class App extends React.Component {
               :
               <Redirect to='/login' />
             } />
+            <Route exact path='/chill' render={() =>
+              <ChillPage/>
+            }/>
             </Switch>
           </main>
       </div>
