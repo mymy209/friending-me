@@ -12,7 +12,7 @@ class AddLogPage extends Component {
  };
 
  checkIfValid() {
-   if (this.state.formData.emotion) return false;
+   if (this.state.formData.emotion) return true;
  }
 
  formRef = React.createRef();
@@ -36,7 +36,6 @@ class AddLogPage extends Component {
      formData,
      invalidForm: !this.formRef.current.checkValidity()
    });
-   console.log(this.state);
  }
 
  render() {
@@ -58,7 +57,6 @@ class AddLogPage extends Component {
              name="description"
              value={this.state.formData.name}
              onChange={this.handleChange}
-             required
            />
          </div>
          <button
