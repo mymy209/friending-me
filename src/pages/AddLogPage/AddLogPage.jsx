@@ -7,6 +7,7 @@ class AddLogPage extends Component {
     formData: {
         emotion: '',
         description: '',
+        date: '',
         user: this.props.user._id,
     }
  };
@@ -16,6 +17,15 @@ class AddLogPage extends Component {
  }
 
  formRef = React.createRef();
+
+ async componentDidUpdate() {
+  let today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
+  today = mm + '/' + dd + '/' + yyyy;
+  this.state.formData.date = today;
+ }
 
  handleSubmit = e => {
    e.preventDefault();

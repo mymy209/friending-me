@@ -6,6 +6,7 @@ function LogListItem(props) {
     <div>
       <img src={props.EMOTIONS[props.log.emotion].pic} alt="emotion"/>
       <p>{props.log.description}</p>
+      <p>{props.log.date}</p>
       {/* <Link
         to={{
           pathname: '/goals/edit',

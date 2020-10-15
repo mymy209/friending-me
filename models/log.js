@@ -10,6 +10,10 @@ const logSchema = new Schema({
     user: { 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    date: {
+        type: String,
+        required: true,
     }
 }, {
     timestamps: true
