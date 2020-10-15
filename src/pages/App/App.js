@@ -138,7 +138,7 @@ class App extends React.Component {
   handleAddGoal = async newGoalData => {
     const newGoal = await goalAPI.create(newGoalData);
     this.setState(state => ({
-      logs: [...state.logs, newGoal]
+      goals: [...state.goals, newGoal]
     }), 
     () => this.props.history.push('/goals'));
   }
