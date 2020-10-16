@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 function GoalListItem(props) { 
   return (
     <div>
-        <h3>{props.goal.title}</h3>
+        <p>{props.goal.title}</p>
       <Link
         to={{
           pathname: '/goals/edit',

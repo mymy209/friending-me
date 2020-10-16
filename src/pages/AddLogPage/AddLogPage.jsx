@@ -66,6 +66,7 @@ class AddLogPage extends Component {
 					name="description"
 					value={this.state.formData.name}
 					onChange={this.handleChange}
+					required
 				/>
 			</div>
 			<button

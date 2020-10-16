@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 3px solid rgba(255, 255, 255, 0.685);
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.note {
+    width: 400px;
+    display: inline;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text {
+    word-break: break-all;
+}

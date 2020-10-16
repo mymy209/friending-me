@@ -13,7 +13,6 @@ class Advice extends React.Component {
     }
 
     render() {
-        console.log(this.state.advice);
         return (
             <div class="adviceContainer fade-in">
                 <div className="adviceCard">
