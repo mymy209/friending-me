@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import EmotionItem from '../../components/EmotionItem/EmotionItem';
 
 class AddLogPage extends Component {
  state = {

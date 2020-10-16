@@ -142,8 +142,6 @@ class App extends React.Component {
       const goals = await goalAPI.getAll();
       const logs = await logAPI.getAll();
       this.setState({goals, logs});
-      console.log(this.state.logs);
-      console.log(this.state.goals);
     }
   }
 
