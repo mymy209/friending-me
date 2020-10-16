@@ -5,7 +5,7 @@ import Steps from '../../components/Steps/Steps';
 const LandingPage = (props) => {
   let display = props.user ?
     <div>
-      <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
+      <h1>WELCOME, {props.user.name}</h1>
       <Advice />
     </div>
     :

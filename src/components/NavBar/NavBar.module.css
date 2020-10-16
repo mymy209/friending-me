@@ -6,12 +6,11 @@
 }
 
 .nav:hover {
-    background-color: #E3C0BA;
+    background-color: #545477;
 }
 
 .navWrapper {
     padding: 20px 0px 20px 0px;
-    background-color: #e3c0bae3;
     display: flex;
     justify-content: space-between;
 }

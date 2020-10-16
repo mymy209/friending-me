@@ -1,6 +1,7 @@
 import React from 'react';
 import * as goalAPI from '../../utils/goals-api';
 import {Link} from 'react-router-dom';
+import styles from './ProfilePage.module.css';
 
 class ProfilePage extends React.Component {
     state = {
@@ -31,10 +32,16 @@ class ProfilePage extends React.Component {
         return(
             <div>
                 <h1>Profile</h1>
-                <p>Level: {this.state.level}</p>
-                <p>Until next level: {this.state.remainingExp}%</p>
-                <p>Goals achieved: {this.state.goals}</p>
-                <img src={this.state.avatar} alt="avatar"/>
+                <div className={styles.container}>
+                <div>
+                    <img src={this.state.avatar} alt="avatar"/>
+                </div>
+                <div className={styles.status}>
+                    <p>Level: {this.state.level}</p>
+                    <p>Until next level: {this.state.remainingExp}%</p>
+                    <p>Goals achieved: {this.state.goals}</p>
+                </div>
+                </div>
                 <Link to='/goals/completed'>My Completed Goals</Link>
             </div>
         );

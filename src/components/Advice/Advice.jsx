@@ -1,5 +1,6 @@
 import React from 'react';
 import * as adviceAPI from '../../utils/advice-api';
+import './Advice.css';
 
 class Advice extends React.Component {
     state = {
@@ -14,7 +15,11 @@ class Advice extends React.Component {
     render() {
         console.log(this.state.advice);
         return (
-        <p>{this.state.advice}</p>
+            <div class="adviceContainer fade-in">
+                <div className="adviceCard">
+                    <p className="fade-in">{this.state.advice}</p>
+                </div>
+            </div>
         );
     }
 }

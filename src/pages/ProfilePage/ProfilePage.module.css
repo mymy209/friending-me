@@ -1,0 +1,11 @@
+.container {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.status {
+    padding-left: 50px;
+}
+
