@@ -8,7 +8,6 @@ const GIF = [
     "https://i.imgur.com/YUGsLhc.gif",
     "https://i.imgur.com/gmeZlYR.gif",
     "https://i.imgur.com/19dq9h9.gif",
-    "https://i.imgur.com/FBCZRcG.gif",
     "https://i.imgur.com/vww9aM2.gif",
     "https://i.imgur.com/9lD9H2N.gif",
     "https://i.imgur.com/VFmYViO.gif",
@@ -19,7 +18,7 @@ const GIF = [
 function ChillGif() {
     let gif = GIF[Math.floor(Math.random() * GIF.length)];
     return (
-        <img src={gif} alt="gif"/>
+        <img width="450" src={gif} alt="gif"/>
     )
 }
 

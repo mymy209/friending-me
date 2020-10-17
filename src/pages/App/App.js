@@ -8,7 +8,6 @@ import * as logAPI from '../../utils/logs-api';
 import userService from '../../utils/userService';
 
 //components
-import AboutPage from '../AboutPage/AboutPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LogListPage from '../LogListPage/LogListPage';
 import SignupPage from '../SignupPage/SignupPage';
@@ -25,61 +24,47 @@ import EditGoalPage from '../EditGoalPage/EditGoalPage';
 import ChillPage from '../ChillPage/ChillPage';
 
 const EMOTIONS = {
-  happy: {
+  Happy: {
     pic: "https://i.imgur.com/hjCAHpb.png", 
-    points: 20
   },
-  excited: {
+  Excited: {
     pic: "https://i.imgur.com/FIVzqiC.png", 
-    points: 15
   },
-  surprised: {
+  Surprised: {
     pic: "https://i.imgur.com/wGIyVji.png", 
-    points: 12
   },
-  embarrassed: {
+  Embarrassed: {
     pic: "https://i.imgur.com/QCefQe3.png", 
-    points: 7
   },
-  relaxed: {
+  Relaxed: {
     pic: "https://i.imgur.com/P7z2Wup.png", 
-    points: 20
   },
-  sad: {
+  Sad: {
     pic: "https://i.imgur.com/iYQvMAA.png", 
-    points: 3
   },
-  angry: {
+  Angry: {
     pic: "https://i.imgur.com/seEeTzq.png", 
-    points: 8
   },
-  numb: {
+  Numb: {
     pic: "https://i.imgur.com/UgdgHN8.png", 
-    points: 0
   },
-  irritated: {
+  Irritated: {
     pic: "https://i.imgur.com/YtTr578.png", 
-    points: 4
   },
-  disgusted: {
+  Disgusted: {
     pic: "https://i.imgur.com/IIXG1EF.png", 
-    points: 4
   },
-  disappointed: {
+  Disappointed: {
     pic: "https://i.imgur.com/67nZtpu.png", 
-    points: 5
   },
-  tired: {
+  Tired: {
     pic: "https://i.imgur.com/jZgaH3g.png", 
-    points: 7
   },
-  scared: {
+  Scared: {
     pic: "https://i.imgur.com/14I012m.png", 
-    points: 5
   },
-  hopeful: {
+  Hopeful: {
     pic: "https://i.imgur.com/iph4ctn.png", 
-    points: 20
   }
 };
 
@@ -230,9 +215,6 @@ class App extends React.Component {
             }/>
             <Route exact path='/' render={() => 
               <LandingPage user={this.state.user}/>
-            } />
-            <Route exact path='/about' render={() => 
-              <AboutPage />
             } />
               <Route exact path='/goals/create' render={() =>
                 userService.getUser() ? 

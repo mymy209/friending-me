@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import styles from './AddLogPage.module.css';
 
 class AddLogPage extends Component {
 	state = {
@@ -51,31 +52,52 @@ class AddLogPage extends Component {
 	return (
 		<>
 		<h1>Add Log</h1>
-		{Object.keys(this.props.EMOTIONS).map(emotion => (
-			<div key={emotion}>
-				<button>
-					<img src={this.props.EMOTIONS[emotion].pic} alt={emotion} onClick={this.handleClick}/>
-				</button>
-				<p>{emotion}</p>
+		<div className={styles.container}>
+			<div className={styles.emotionForm} >
+				<div className={styles.padding}>
+					<h2>Emotion</h2>
+				</div>
+				<div className={styles.emotions}>
+					{Object.keys(this.props.EMOTIONS).map(emotion => (
+						<div className={styles.emotion} key={emotion}>
+							<button className={this.state.formData.emotion === emotion ? styles.selected : styles.button}>
+								<img src={this.props.EMOTIONS[emotion].pic} alt={emotion} onClick={this.handleClick}/>
+							</button>
+							<div className={styles.label}>
+								<p>{emotion}</p>
+							</div>
+						</div>
+					))}
+				</div>
 			</div>
-		))}
-		<form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-			<div>
-				<label>Note</label>
-				<input
-					name="description"
-					value={this.state.formData.name}
-					onChange={this.handleChange}
-					required
-				/>
+			<div className={styles.note}>
+				<form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
+					<div className={styles.padding}>
+						<div className={styles.padding}>
+							<h2>Note</h2>
+						</div>
+						<div className={styles.center}>
+							<textarea
+								className={styles.input}
+								name="description"
+								value={this.state.formData.name}
+								onChange={this.handleChange}
+								required
+							/><br/>
+							<div className={styles.btnContainer}>
+								<button
+								className={styles.submitBtn}
+								type="submit"
+								disabled={this.state.invalidForm}
+								>
+								Add Log
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
 			</div>
-			<button
-			type="submit"
-			disabled={this.state.invalidForm}
-			>
-			Add Log
-			</button>
-		</form>
+		</div>
 		</>
 	);
 	}

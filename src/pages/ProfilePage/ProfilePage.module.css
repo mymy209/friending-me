@@ -9,3 +9,16 @@
     padding-left: 50px;
 }
 
+.link {
+    padding-bottom: 15px;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    padding: 50px 20px 50px 20px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 3px solid rgba(255, 255, 255, 0.685);
+}
+

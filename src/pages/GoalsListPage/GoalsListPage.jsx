@@ -7,10 +7,10 @@ function GoalsListPage(props) {
     const goals = props.goals.filter(goal => !goal.completed );
     return (
         <div>
+            <h1>Goals List</h1>
             <div className={styles.link}>
                 <Link to='/goals/completed'>My Completed Goals</Link>
             </div>
-            <h1>Goals List</h1>
             {goals.map(goal => (
                 <GoalListItem goal={goal} key={goal._id} handleDeleteGoal={props.handleDeleteGoal}/>
             ))}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styles from './EditGoalPage.module.css';
 
 class EditGoalPage extends React.Component {
  state = {
@@ -38,22 +39,28 @@ class EditGoalPage extends React.Component {
        <h1>Edit Goal</h1>
        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
          <div>
-           <label>Goal's Title (required)</label>
-           <input
-             name="title"
-             value={this.state.formData.title}
-             onChange={this.handleChange}
-             required
-           />
-           <label>Accomplished </label>
-           <input
-            type="checkbox"
-            name="completed"
-            value={this.state.formData.completed}
-            onChange={this.handleCheck}
-           />
+           <h3>Goal's Title (required)</h3>
+           <div className={styles.padding}>
+            <input
+              className={styles.input}
+              name="title"
+              value={this.state.formData.title}
+              onChange={this.handleChange}
+              required
+            />
+           </div>
+           <div className={styles.padding}>
+            <label className={styles.label}>Accomplished </label>
+            <input
+              type="checkbox"
+              name="completed"
+              value={this.state.formData.completed}
+              onChange={this.handleCheck}
+            />
+           </div>
          </div>
          <button
+           className={styles.button}
            type="submit"
            disabled={this.state.invalidForm}
          >

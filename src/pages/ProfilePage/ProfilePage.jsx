@@ -1,5 +1,6 @@
 import React from 'react';
 import * as goalAPI from '../../utils/goals-api';
+import * as logAPI from '../../utils/logs-api';
 import {Link} from 'react-router-dom';
 import styles from './ProfilePage.module.css';
 
@@ -13,8 +14,10 @@ class ProfilePage extends React.Component {
     /*--- Lifecycle Methods ---*/
     async componentDidMount() {
         let goals = await goalAPI.getCompleted();
-        goals = goals.length
-        let exp = 15 * goals;
+        let logs = await logAPI.getAll();
+        goals = goals.length;
+        logs = logs.length;
+        let exp = (15 * goals) + (5 * logs);
         let level = Math.floor((exp / 100)) + 1;
         let avatar = level - 1;
         let remainingExp = exp % 100;
@@ -33,16 +36,23 @@ class ProfilePage extends React.Component {
             <div>
                 <h1>Profile</h1>
                 <div className={styles.container}>
-                <div>
-                    <img src={this.state.avatar} alt="avatar"/>
+                    <div className={styles.card}>
+                        <div>
+                            <img src={this.state.avatar} alt="avatar"/>
+                        </div>
+                        <div className={styles.status}>
+                            <p>Level: {this.state.level}</p>
+                            <p>Until next level: {this.state.remainingExp}%</p>
+                            <p>Goals achieved: {this.state.goals}</p>
+                        </div>
+                    </div>
                 </div>
-                <div className={styles.status}>
-                    <p>Level: {this.state.level}</p>
-                    <p>Until next level: {this.state.remainingExp}%</p>
-                    <p>Goals achieved: {this.state.goals}</p>
+                <div className={styles.link}>
+                    <Link to='/logs'>My Logs</Link><br></br>
                 </div>
+                <div className={styles.link}>
+                    <Link to='/goals/completed'>My Completed Goals</Link>
                 </div>
-                <Link to='/goals/completed'>My Completed Goals</Link>
             </div>
         );
     }

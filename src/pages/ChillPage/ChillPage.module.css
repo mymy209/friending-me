@@ -1,0 +1,31 @@
+.card {
+    width: 300px;
+    padding: 50px 15px 30px 15px;
+    position: relative;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+	border: 5px solid rgba(255, 255, 255, 0.658);
+	font-size: 18px;
+}
+
+.container {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.pic {
+    border-radius: 50%;
+}
+
+.refDiv {
+    display: flex;
+    justify-content: space-around;
+}
+
+.creds {
+    color: rgba(255, 255, 255, 0.363);
+}
+
+.TD {
+    font-size: larger;
+}

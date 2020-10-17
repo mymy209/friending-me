@@ -1,0 +1,42 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+    padding: 30px 15px 30px 15px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: 3px solid rgba(255, 255, 255, 0.685);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.text {
+    word-break: break-all;
+}
+
+.goal {
+    width: 70%;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button {
+    padding: 5px;
+    color: #373751;
+    border: none;
+    border-radius: 5%;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+}
+
+.edit {
+    color: rgba(255, 255, 255, 0.671);
+}

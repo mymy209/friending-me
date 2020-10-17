@@ -1,0 +1,32 @@
+.landingPageCard {
+    width: 50%;
+    padding: 70px 30px 70px 30px;
+    margin: 20px;
+    position: relative;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+	border: 4px solid rgba(255, 255, 255, 0.658);
+	font-size: 18px;
+}
+
+.landingPageCardContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

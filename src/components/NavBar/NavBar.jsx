@@ -21,7 +21,6 @@ const NavBar = (props) => {
     :
     <div className={styles.navWrapper}>
       <div>
-        <Link to='/about' className={styles.nav}>About</Link>
         <Link to='/' className={styles.nav}>Home</Link>
       </div>
       <div>

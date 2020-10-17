@@ -11,6 +11,10 @@ h1 {
   padding: 30px 0px 50px 0px;
 }
 
+button:focus {
+  outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
