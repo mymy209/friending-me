@@ -35,6 +35,7 @@ Make sure to bring your friend with you, yourself.
 * Mongoose
 * React
 * Random Adviceslip API
+* JWT Authentication
 
 ## Getting Started
 Click 
