@@ -19,7 +19,7 @@ const LandingPage = (props) => {
                 <p>How are you feeling? Do you want to set any goals?</p>
                 <p>Or if you're tired, you can just chill while listening to some lofi music.</p>
                 <p>Wouldn't hurt to become friends with yourself, right?</p>
-                <p>So go ahead and give yourself a try, and welcome to Friending-Me.</p>
+                <p>So go ahead and give yourself a try, and welcome to Friending Me.</p>
               </div>
             </div>
       </div>;

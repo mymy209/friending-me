@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Friending Me
 
-## Available Scripts
+## Description
+When life gets crayz, it's very easy to sort of ignore your wellness, especially mental health since it is not visible. 
 
-In the project directory, you can run:
+Friending Me is an app where you can take a break from drama and sit down with yourself. 
 
-### `npm start`
+When users log in, they are able to make logs of their current feelings, and record their assets to self-motivate themselves! 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Watch your avatar grow as you record more things about you on Friending Me!
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Make sure to bring your friend with you, yourself.
 
-### `npm test`
+## Screen Shots
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Landing Page 
+<img src="https://i.imgur.com/5i8oeRE.png" height=200px>
 
-### `npm run build`
+### Profile Page
+<img src="https://i.imgur.com/nkQGvnt.png" height=200px>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### View Goals
+<img src="https://i.imgur.com/dWPqtkp.png" height=200px>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Chill Page
+<img src="https://i.imgur.com/C5IZ7Ek.png" height=200px>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
+* HTML
+* CSS
+* Materialize
+* JavaScript
+* MongoDB
+* Express
+* Mongoose
+* React
 
-### `npm run eject`
+## Getting Started
+Click 
+<a href="https://timely-msj.herokuapp.com/">HERE</a>
+to try Friending Me!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Click 
+<a href="https://trello.com/b/xM5nnrqZ/project-4">HERE</a> 
+to look at my project planning! 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Next Steps
+In the future we would like to add the following:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Direct messeging system
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Implement following other users
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Implement a feature where users are able to see their "happiness" graph over the last 6 months based on their logs
