@@ -28,7 +28,6 @@ Make sure to bring your friend with you, yourself.
 ## Technologies Used
 * HTML
 * CSS
-* Materialize
 * JavaScript
 * MongoDB
 * Express
@@ -39,7 +38,7 @@ Make sure to bring your friend with you, yourself.
 
 ## Getting Started
 Click 
-<a href="https://timely-msj.herokuapp.com/">HERE</a>
+<a href="https://friending-me.herokuapp.com/">HERE</a>
 to try Friending Me!
 
 Click 
