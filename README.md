@@ -52,3 +52,5 @@ In the future we would like to add the following:
 * Implement following other users
 
 * Implement a feature where users are able to see their "happiness" graph over the last 6 months based on their logs
+
+* Responsive design for mobile
