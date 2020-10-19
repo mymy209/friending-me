@@ -19,6 +19,9 @@ class ProfilePage extends React.Component {
         logs = logs.length;
         let exp = (15 * goals) + (5 * logs);
         let level = Math.floor((exp / 100)) + 1;
+        if (level > 34) {
+            level = 34
+        };
         let avatar = level - 1;
         let remainingExp = exp % 100;
         console.log(this.props);
